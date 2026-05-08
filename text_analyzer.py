@@ -1,5 +1,3 @@
-# ---- Funciones provistas (NO modificar) ----
-
 def count_vowels(text):
     """Dado un texto, retorna la cantidad de vocales (a, e, i, o, u) que contiene."""
     count = 0
@@ -19,21 +17,15 @@ def count_consonants(text):
 # ---- Funciones a implementar ----
 
 def total_letters(text):
-    return count_consonants(text) + count_vowels(text)
     """
     Retorna la cantidad total de letras en el texto.
     Debe USAR las funciones count_vowels y count_consonants.
     """
-    return "ANSWER HERE"  # Remove this line and implement
+    vowels = count_vowels(text)
+    consonants = count_consonants(text)
+    return vowels + consonants
 
 def vowel_percentage(text):
-    if total_letters ==0:
-        return 0.0
-    else:
-        por=(count_vowels(text)/total_letters(text))*100
-        wpor= round(por,1)
-        return wpor
-
     """
     Retorna el porcentaje de vocales sobre el total de letras, redondeado a 1 decimal.
     Si no hay letras, retorna 0.0.
@@ -41,10 +33,16 @@ def vowel_percentage(text):
 
     Ejemplo: "hola" tiene 2 vocales de 4 letras → 50.0
     """
-    return "ANSWER HERE"  # Remove this line and implement
+    vowels = count_vowels(text)
+    total = total_letters(text)
+
+    if total == 0:
+        return 0.0
+
+    percentage = (vowels / total) * 100
+    return round(percentage, 1)
 
 def analyze_text(text):
-    return(f"V:{count_vowels(text)} C:{count_consonants} T:{total_letters} P:{vowel_percentage}")
     """
     Retorna un string con el análisis completo del texto usando el siguiente formato:
     "V:{vowels} C:{consonants} T:{total} P:{percentage}%"
@@ -53,4 +51,9 @@ def analyze_text(text):
 
     Ejemplo: analyze_text("hola") → "V:2 C:2 T:4 P:50.0%"
     """
-    return "ANSWER HERE"  # Remove this line and implement
+    vowels = count_vowels(text)
+    consonants = count_consonants(text)
+    total = total_letters(text)
+    percentage = vowel_percentage(text)
+
+    return f"V:{vowels} C:{consonants} T:{total} P:{percentage}%"
