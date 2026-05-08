@@ -14,13 +14,13 @@ def classify_number(n):
 
     if n==0:
         return "zero"
-    if is_positive:
-        if is_even:
+    elif is_positive(n):
+        if is_even(n):
             return "positive even"
         else:
             return "positive odd"
     else:
-        if is_even:
+        if is_even(n):
             return "negative even"
         else:
             return "negative odd"

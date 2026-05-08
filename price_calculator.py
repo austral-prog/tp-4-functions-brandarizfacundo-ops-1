@@ -8,41 +8,27 @@ def apply_tax(price, tax_pct):
     """Dado un precio y un porcentaje de impuesto, retorna el precio con el impuesto aplicado."""
     return price * (1 + tax_pct / 100)
 
+
 # ---- Funciones a implementar ----
 
 def final_price(price, quantity, discount_pct, tax_pct):
-    subt= price*quantity
-    apply_discount(subt,discount_pct)
-    apply_tax(subt,tax_pct)
-    return round(subt,2)
-    """
-    Calcula el precio final de una compra.
-    Debe USAR las funciones apply_discount y apply_tax.
 
-    Pasos:
-      1. Calcular el subtotal (price * quantity).
-      2. Aplicar el descuento al subtotal usando apply_discount.
-      3. Aplicar el impuesto al resultado usando apply_tax.
-      4. Retornar el resultado redondeado a 2 decimales usando round().
-    """
-    return "ANSWER HERE"  # Remove this line and implement
+    subt = price * quantity
+
+    subt = apply_discount(subt, discount_pct)
+
+    subt = apply_tax(subt, tax_pct)
+
+    return round(subt, 2)
+
 
 def best_deal(price_a, qty_a, disc_a, price_b, qty_b, disc_b, tax_pct):
-    suba=price_a*qty_a
-    apply_discount(suba,disc_a)
-    apply_tax(suba,tax_pct)
-    subb = price_b * qty_b
-    apply_discount(subb, disc_b)
-    apply_tax(subb, tax_pct)
-    if suba>= subb:
+
+    total_a = final_price(price_a, qty_a, disc_a, tax_pct)
+
+    total_b = final_price(price_b, qty_b, disc_b, tax_pct)
+
+    if total_a <= total_b:
         return "A"
     else:
         return "B"
-    """
-    Dados dos productos A y B (cada uno con su precio, cantidad y descuento)
-    y un porcentaje de impuesto común, retorna el string "A" o "B"
-    según cuál tenga el menor precio final.
-    Si son iguales, retorna "A".
-    Debe USAR la función final_price para resolver el ejercicio.
-    """
-    return "ANSWER HERE"  # Remove this line and implement
